@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Manage Users</title></head>
+<body>
+<nav th:replace="~{fragments/navbar :: adminNav}"></nav>
+<h2>Manage Users</h2>
+<a href="/admin/users/new">+ Add New User</a>
+<table border="1" cellpadding="8" style="margin-top:10px; border-collapse:collapse;">
+    <tr>
+        <th>Photo</th><th>Username</th><th>Email</th><th>Role</th><th>Phone</th><th>Actions</th>
+    </tr>
+    <tr th:each="u : ${users}">
+        <td>
+            <img th:if="${u.imagePath}" th:src="@{${u.imagePath}}" width="40" height="40" style="border-radius:50%;"/>
+            <span th:unless="${u.imagePath}">—</span>
+        </td>
+        <td th:text="${u.username}"></td>
+        <td th:text="${u.email}"></td>
+        <td th:text="${u.role}"></td>
+        <td th:text="${u.phone}"></td>
+        <td>
+            <a th:href="@{/admin/users/{id}/edit(id=${u.userId})}">Edit</a>
+            &nbsp;
+            <form th:action="@{/admin/users/{id}/delete(id=${u.userId})}" method="post" style="display:inline;">
+                <button type="submit" onclick="return confirm('Delete this user?');">Delete</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

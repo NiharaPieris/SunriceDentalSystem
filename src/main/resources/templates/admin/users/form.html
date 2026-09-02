@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Add User</title></head>
+<body>
+<nav th:replace="~{fragments/navbar :: adminNav}"></nav>
+<h2>Add New User</h2>
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+<form method="post" th:action="@{/admin/users/new}" enctype="multipart/form-data">
+    <label>Username</label><br>
+    <input type="text" name="username" th:value="${formUser.username}" required/><br><br>
+
+    <label>Email</label><br>
+    <input type="email" name="email" th:value="${formUser.email}" required/><br><br>
+
+    <label>Address</label><br>
+    <input type="text" name="address" th:value="${formUser.address}"/><br><br>
+
+    <label>Phone Number</label><br>
+    <input type="text" name="phone" th:value="${formUser.phone}"/><br><br>
+
+    <label>Password</label><br>
+    <input type="password" name="password" required/><br><br>
+
+    <label>Confirm Password</label><br>
+    <input type="password" name="confirmPassword" required/><br><br>
+
+    <label>Role</label><br>
+    <select name="role" required>
+        <option value="RECEPTIONIST">Receptionist</option>
+        <option value="DENTIST">Dentist</option>
+    </select><br><br>
+
+    <label>Profile Image (optional)</label><br>
+    <input type="file" name="image" accept="image/*"/><br><br>
+
+    <button type="submit">Create</button>
+    <a href="/admin/users">Cancel</a>
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Edit User</title></head>
+<body>
+<nav th:replace="~{fragments/navbar :: adminNav}"></nav>
+<h2>Edit User</h2>
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+<img th:if="${formUser.imagePath}" th:src="@{${formUser.imagePath}}" width="80" height="80" style="border-radius:50%; display:block; margin-bottom:10px;"/>
+
+<form method="post" th:action="@{/admin/users/{id}/edit(id=${formUser.userId})}" enctype="multipart/form-data">
+    <label>Username</label><br>
+    <input type="text" name="username" th:value="${formUser.username}" required/><br><br>
+
+    <label>Email</label><br>
+    <input type="email" name="email" th:value="${formUser.email}" required/><br><br>
+
+    <label>Address</label><br>
+    <input type="text" name="address" th:value="${formUser.address}"/><br><br>
+
+    <label>Phone Number</label><br>
+    <input type="text" name="phone" th:value="${formUser.phone}"/><br><br>
+
+    <label>New Password (leave blank to keep current)</label><br>
+    <input type="password" name="password"/><br><br>
+
+    <label>Confirm New Password</label><br>
+    <input type="password" name="confirmPassword"/><br><br>
+
+    <label>Role</label><br>
+    <select name="role" required>
+        <option value="RECEPTIONIST" th:selected="${formUser.role == 'RECEPTIONIST'}">Receptionist</option>
+        <option value="DENTIST" th:selected="${formUser.role == 'DENTIST'}">Dentist</option>
+    </select><br><br>
+
+    <label>Replace Profile Image (optional)</label><br>
+    <input type="file" name="image" accept="image/*"/><br><br>
+
+    <button type="submit">Save</button>
+    <a href="/admin/users">Cancel</a>
+</form>
+</body>
+</html>

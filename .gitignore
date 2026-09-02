@@ -6,7 +6,7 @@ target/
 .idea/
 *.class
 db.properties
-
+uploads/
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

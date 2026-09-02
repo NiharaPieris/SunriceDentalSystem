@@ -1,0 +1,14 @@
+<nav th:fragment="adminNav" style="background:#333; padding:10px;">
+    <a href="/admin/profile" style="color:white;" th:text="'Welcome, ' + ${user.username}"></a>
+    &nbsp;|&nbsp;
+    <a href="/admin/dashboard" style="color:white;">Dashboard</a> |
+    <a href="/admin/users" style="color:white;">Users</a> |
+    <a href="/admin/dentists" style="color:white;">Dentists</a> |
+    <a href="/admin/treatments" style="color:white;">Treatments</a> |
+    <a href="/admin/appointments" style="color:white;">Appointments</a> |
+    <a href="/admin/bills" style="color:white;">Billing</a> |
+    <a href="/admin/reports" style="color:white;">Reports</a> |
+    <a href="/admin/audit" style="color:white;">Audit Log</a> |
+    <a href="/admin/profile" style="color:white;">Profile</a> |
+    <a href="/logout" style="color:white;">Logout</a>
+</nav>

@@ -2,19 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head><title>Admin Dashboard</title></head>
 <body>
-<nav style="background:#333; padding:10px;">
-    <span style="color:white;" th:text="'Welcome, ' + ${user.username}"></span>
-    &nbsp;|&nbsp;
-    <a href="/admin/dashboard" style="color:white;">Dashboard</a> |
-    <a href="#" style="color:white;">Patients</a> |
-    <a href="#" style="color:white;">Dentists</a> |
-    <a href="#" style="color:white;">Treatments</a> |
-    <a href="#" style="color:white;">Appointments</a> |
-    <a href="#" style="color:white;">Billing</a> |
-    <a href="#" style="color:white;">Reports</a> |
-    <a href="/logout" style="color:white;">Logout</a>
-</nav>
+<nav th:replace="~{fragments/navbar :: adminNav}"></nav>
 <h2>Admin Dashboard</h2>
-<p>Pick a section from the navbar above (we'll build these next).</p>
+<p>Pick a section from the navbar above.</p>
 </body>
 </html>

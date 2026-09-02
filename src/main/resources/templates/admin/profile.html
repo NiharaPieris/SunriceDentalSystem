@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>My Profile</title></head>
+<body>
+<nav th:replace="~{fragments/navbar :: adminNav}"></nav>
+<h2>My Profile</h2>
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+<p th:if="${success}" th:text="${success}" style="color:green;"></p>
+
+<img th:if="${user.imagePath}" th:src="@{${user.imagePath}}" width="100" height="100" style="border-radius:50%; display:block; margin-bottom:10px;"/>
+
+<form method="post" th:action="@{/admin/profile}" enctype="multipart/form-data">
+    <label>Username</label><br>
+    <input type="text" th:value="${user.username}" disabled/><br><br>
+
+    <label>Email</label><br>
+    <input type="email" name="email" th:value="${user.email}" required/><br><br>
+
+    <label>New Password (leave blank to keep current)</label><br>
+    <input type="password" name="password"/><br><br>
+
+    <label>Confirm New Password</label><br>
+    <input type="password" name="confirmPassword"/><br><br>
+
+    <label>Update Profile Image (optional)</label><br>
+    <input type="file" name="image" accept="image/*"/><br><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+</body>
+</html>
